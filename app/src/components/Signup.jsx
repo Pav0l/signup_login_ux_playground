@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from './shared/Input';
+import Form from './shared/Form';
 
 export default class Signup extends React.Component {
 
@@ -8,11 +8,7 @@ export default class Signup extends React.Component {
     return (
       <div>
         Signup
-        <Input
-          name='username'
-          placeholder='username'
-          type='text'
-        />
+        <Form />
       </div>
     );
   }
