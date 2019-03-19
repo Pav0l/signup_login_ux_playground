@@ -2,14 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function SocialHeader({...inputProps}) {
-  const { textValue } = inputProps;
-
 
   return (
     <SocialContainer>
-      <a><SocImg src="https://repl.it/public/images/google.png" alt="ggl"></SocImg></a>
-      <a><SocImg src="https://repl.it/public/images/github.png" alt="gh"></SocImg></a>
-      <a><SocImg src="https://repl.it/public/images/facebook.png" alt="fb"></SocImg></a>
+      <a href="https://accounts.google.com/servicelogin"><SocImg src="https://repl.it/public/images/google.png" alt="ggl"></SocImg></a>
+      <a href="https://github.com/login"><SocImg src="https://repl.it/public/images/github.png" alt="gh"></SocImg></a>
+      <a href="https://www.facebook.com/"><SocImg src="https://repl.it/public/images/facebook.png" alt="fb"></SocImg></a>
     </SocialContainer>
   );
 }

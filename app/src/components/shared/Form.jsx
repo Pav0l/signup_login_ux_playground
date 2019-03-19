@@ -63,6 +63,8 @@ export default class Signup extends React.Component {
           clearInput={this.clearInputValue}
         />
 
+        <LoginText>Already have an account? <a href="#">Log in!</a></LoginText>
+
         <Button
           textValue='Sign up'
           type="submit"
@@ -74,10 +76,28 @@ export default class Signup extends React.Component {
 
 const FormContainer = styled.form`
   max-width: 200px;
-  margin: 0.5rem auto;
+  margin: 0.5rem auto 0;
   padding: 1rem 0;
   border-top: 1px solid grey;
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+
+const LoginText = styled.div`
+  max-width: 200px;
+  font-size: 12px;
+  text-align: center;
+  color: rgb(180, 180, 180);
+  line-height: 14px;
+  margin: 0.5rem 0;
+
+  a {
+    text-decoration: none;
+    color: rgb(121, 152, 166);
+
+    &:hover {
+      border-bottom: 1px solid #4183c4;
+    }
+  }
 `;
