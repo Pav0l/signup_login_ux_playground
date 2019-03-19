@@ -6,7 +6,7 @@ export default function Input({...inputProps}) {
 
   const nameError = value && (value.length < 3 || value.length > 15) ? `Your ${name} must be between 3 and 15 characters` : null;
   const passwordError = value && value.length < 6 ? `Your ${name} must be at least 5 characters long` : null;
-  // const emailError = value && (value.length < 3 || value.length > 15) ? `Please provide valid ${name}` : null;
+  // const emailError = value && value.includes('@') ? `Please provide valid ${name}` : null;
 
   return (
     <InputWrapper>
@@ -34,6 +34,27 @@ const InputWrapper = styled.div`
   margin-bottom: 0.5rem;
 `;
 
+const StyledIconImg = styled.img`
+  max-width: 15px;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translate(0px, -50%);
+`;
+
+const StyledErrorMsg = styled.div`
+  /* display: none; */
+  padding-left: 0.5rem;
+  top: 50%;
+  transform: translate(105%, -100%);
+  /* border: 1px solid rgb(226, 168, 167); */
+  background-color: rgb(254, 241, 241);
+  max-width: 300px;
+  color: rgb(63, 64, 63);
+  font-size: 14px;
+`;
+
 const StyledInput = styled.input`
   padding: 0.5rem 1.3rem;
   width: 100%;
@@ -44,26 +65,8 @@ const StyledInput = styled.input`
   &:focus {
     border: 1px solid lightblue;
   }
-`;
-
-const StyledIconImg = styled.img`
-  /* display: ${props => props.focused ? "block" : "none"}; */
-
-  max-width: 15px;
-  cursor: pointer;
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translate(0px, -50%);
-`;
-
-const StyledErrorMsg = styled.div`
-  padding-left: 0.5rem;
-  top: 50%;
-  transform: translate(105%, -100%);
-  /* border: 1px solid rgb(226, 168, 167); */
-  background-color: rgb(254, 241, 241);
-  max-width: 300px;
-  color: rgb(63, 64, 63);
-  font-size: 14px;
+  /* This will display the component only if StyledInput is focused */
+  /* &:focus ~ ${StyledErrorMsg} {
+    display: block;
+  } */
 `;
