@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Form from './shared/Form';
 import SocialHeader from './shared/SocialHeader';
+import Terms from './shared/Terms';
 
 export default class Signup extends React.Component {
 
@@ -11,6 +12,10 @@ export default class Signup extends React.Component {
       <SignupContainer>
         <SocialHeader />
         <Form />
+        <Terms
+          company="nifty market"
+          termsLink="#"
+        />
       </SignupContainer>
     );
   }
