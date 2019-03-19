@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Input from './Input';
+import Button from './Button';
 
 export default class Signup extends React.Component {
   state = {
@@ -22,9 +24,18 @@ export default class Signup extends React.Component {
     }));
   }
 
+  buttonClick = event => {
+    event.preventDefault();
+    // Add whatever you need to do with button click
+    console.log(this.state);
+  }
+
   render () {
     return (
-      <FormContainer>        
+      <FormContainer
+        autoComplete="off"
+        onSubmit={this.buttonClick}
+      >        
         <Input
           name='username'
           placeholder='username'
@@ -51,13 +62,22 @@ export default class Signup extends React.Component {
           value={this.state.password}
           clearInput={this.clearInputValue}
         />
+
+        <Button
+          textValue='Sign up'
+          type="submit"
+        />
       </FormContainer>
     );
   }
 }
 
 const FormContainer = styled.form`
-  margin: 2rem auto;
+  max-width: 200px;
+  margin: 0.5rem auto;
   padding: 1rem 0;
   border-top: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
