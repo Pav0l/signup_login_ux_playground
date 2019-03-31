@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 // Components
 import Signup from './components/Signup';
-// import Login from './components/Login';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
 // import UserContent from './components/Content';
 
 const margin = {
@@ -13,10 +15,20 @@ class App extends Component {
   render() {
     return (
       <div style={margin}>
-        <p>Hello world!</p>
-        <Signup />
-        {/* <Login />
-        <UserContent /> */}
+
+        <Navbar />
+
+        <Route
+          path='/signup'
+          component={Signup}
+        />
+
+        <Route
+          path='/login'
+          component={Login}
+        />
+
+        {/* <UserContent /> */}
       </div>
     );
   }
