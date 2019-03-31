@@ -7,6 +7,6 @@ module.exports = {
   insertUser,
 };
 
-function insertUser(name, email, password) {
-  return db('users').insert({ name, email, password });
+function insertUser(username, email, password) {
+  return db('users').insert({ username, email, password });
 }

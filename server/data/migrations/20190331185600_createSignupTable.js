@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
       .unique();
     
     table
-      .string('password', 128)
+      .string('password')
       .notNullable()
       .unique();
 

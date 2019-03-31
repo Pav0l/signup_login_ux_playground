@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Input from './Input';
 import Button from './Button';
+
+const emptyForm = {
+  username: '',
+  password: '',
+  email: '',
+};
 
 export default class Signup extends React.Component {
   state = {
@@ -27,7 +34,13 @@ export default class Signup extends React.Component {
   buttonClick = event => {
     event.preventDefault();
     // Add whatever you need to do with button click
-    console.log(this.state);
+    const {username, email, password } = this.state;
+
+    axios.post('http://127.0.0.1:4000/api/signup', { username, email, password })
+      .then(res => console.log(res.data))
+      .catch(err => console.error('Error: ', err));
+
+    this.setState(emptyForm);
   }
 
   render () {
@@ -79,7 +92,7 @@ export default class Signup extends React.Component {
         {
           this.props.type === 'signup'
           ?
-          <Button textValue='Sign up' type="submit"/>
+          <Button textValue='Sign up' type="submit" onClick={this.buttonClick}/>
           :
           <Button textValue='Log in' type="submit"/>
         }
