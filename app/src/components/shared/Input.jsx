@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function Input({...inputProps}) {
-  const { name, clearInput, value } = inputProps;
+const { name, clearInput, /*value*/ } = inputProps;
 
-  const nameError = value && (value.length < 3 || value.length > 15) ? `Your ${name} must be between 3 and 15 characters` : null;
-  const passwordError = value && value.length < 6 ? `Your ${name} must be at least 5 characters long` : null;
+  // const nameError = value && (value.length < 3 || value.length > 15) ? `Your ${name} must be between 3 and 15 characters` : null;
+  // const passwordError = value && value.length < 6 ? `Your ${name} must be at least 5 characters long` : null;
   // const emailError = value && value.includes('@') ? `Please provide valid ${name}` : null;
 
   return (
