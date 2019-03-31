@@ -1,8 +1,7 @@
 const express = require('express');
-const knex = require('knex');
+const DB = require('../data/dbQueries');
 
 const routes = express.Router();
-
 
 /*
 SIGNUP USER
@@ -14,11 +13,11 @@ routes.post('/', async(req, res) => {
 
   if (username || email || password) {
     try {
-
-      res.status(200).json({ message: "[GET] /api/users"});
+      const addNewUser = await DB.insertUser(username, email, password);
+      res.status(200).json(addNewUser);
     } catch (error) {
       next(error);
-  }
+    }
   }
 });
 
