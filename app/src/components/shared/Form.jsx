@@ -45,14 +45,19 @@ export default class Signup extends React.Component {
           clearInput={this.clearInputValue}
         />
 
-        <Input
-          name='email'
-          placeholder='email'
-          type='text'
-          onChange={this.onInputChange}
-          value={this.state.email}
-          clearInput={this.clearInputValue}
-        />
+        {
+          this.props.type === 'signup'
+          ?
+          <Input
+            name='email'
+            placeholder='email'
+            type='email'
+            onChange={this.onInputChange}
+            value={this.state.email}
+            clearInput={this.clearInputValue}
+          />
+          : null
+        }
 
         <Input
           name='password'
@@ -63,12 +68,21 @@ export default class Signup extends React.Component {
           clearInput={this.clearInputValue}
         />
 
-        <LoginText>Already have an account? <a href="#">Log in!</a></LoginText>
-
-        <Button
-          textValue='Sign up'
-          type="submit"
-        />
+        {
+          this.props.type === 'signup'
+          ?
+          <LoginText>Already have an account? <a href="/login">Log in!</a></LoginText>
+          :
+          <LoginText>Don't have an account? <a href="/signup">Sign up!</a></LoginText>
+        }
+        
+        {
+          this.props.type === 'signup'
+          ?
+          <Button textValue='Sign up' type="submit"/>
+          :
+          <Button textValue='Log in' type="submit"/>
+        }
       </FormContainer>
     );
   }

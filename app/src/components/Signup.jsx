@@ -11,7 +11,9 @@ export default class Signup extends React.Component {
     return (
       <SignupContainer>
         <SocialHeader />
-        <Form />
+        <Form
+          type='signup'
+        />
         <Terms
           company="nifty market"
           termsLink="#"
