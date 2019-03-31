@@ -16,12 +16,12 @@ export default function Input({...inputProps}) {
         src="https://image.flaticon.com/icons/svg/148/148766.svg"
         alt="close-icon"
       />
-      <StyledErrorMsg>
+      {/* <StyledErrorMsg>
         {
           name === 'username' ? nameError :
           name === 'password' ? passwordError : null
         }
-      </StyledErrorMsg>
+      </StyledErrorMsg> */}
 
     </InputWrapper>
   );
