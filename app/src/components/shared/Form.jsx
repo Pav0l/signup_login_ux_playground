@@ -36,9 +36,17 @@ export default class Signup extends React.Component {
     // Add whatever you need to do with button click
     const {username, email, password } = this.state;
 
-    axios.post('http://127.0.0.1:4000/api/signup', { username, email, password })
-      .then(res => console.log(res.data))
-      .catch(err => console.error('Error: ', err));
+    // WIP
+    if (this.props.type === 'signup') {
+      axios.post('http://127.0.0.1:4000/api/signup', { username, email, password })
+        .then(res => console.log(res.data))
+        .catch(err => console.error('Error: ', err));
+    } else if (this.props.type === 'login') {
+      axios.post('http://127.0.0.1:4000/api/login', { username, password })
+        .then(res => console.log(res.data))
+        .catch(err => console.error('Error: ', err));
+    }
+
 
     this.setState(emptyForm);
   }
@@ -94,7 +102,7 @@ export default class Signup extends React.Component {
           ?
           <Button textValue='Sign up' type="submit" onClick={this.buttonClick}/>
           :
-          <Button textValue='Log in' type="submit"/>
+          <Button textValue='Log in' type="submit" onClick={this.buttonClick}/>
         }
       </FormContainer>
     );

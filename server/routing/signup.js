@@ -9,8 +9,7 @@ SIGNUP USER
 @dev - [POST] - req.body must contain valid username, email and password
 */
 routes.post('/', async(req, res, next) => {
-  const credentials = req.body;
-  let { username, email, password } = credentials;
+  let { username, email, password } = req.body;
   
   if (username || email || password) {
     try {
@@ -21,6 +20,8 @@ routes.post('/', async(req, res, next) => {
     } catch (error) {
       next(error);
     }
+  } else {
+    res.status(400).json({ message: 'Please enter username, email and password.'});
   }
 });
 
