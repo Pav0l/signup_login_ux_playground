@@ -8,6 +8,8 @@ const routes = express.Router();
 /*
 LOGIN USER
 @dev - [POST] - req.body must contain valid username and password
+@dev - returns message/error string
+@TODO - return auth token
 */
 routes.post('/', async(req, res, next) => {
   let { username, password } = req.body;

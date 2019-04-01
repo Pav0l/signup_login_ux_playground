@@ -7,6 +7,7 @@ const routes = express.Router();
 /*
 SIGNUP USER
 @dev - [POST] - req.body must contain valid username, email and password
+@dev - return - array with ID of the user
 */
 routes.post('/', async(req, res, next) => {
   let { username, email, password } = req.body;
