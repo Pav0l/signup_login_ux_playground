@@ -6,7 +6,9 @@ export default function Button({...inputProps}) {
 
 
   return (
-    <StyledButton>{textValue}</StyledButton>
+    <StyledButton
+      onClick={inputProps.onClick}
+    >{textValue}</StyledButton>
   );
 }
 
