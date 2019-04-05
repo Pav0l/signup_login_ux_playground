@@ -16,47 +16,45 @@ export default class Signup extends React.Component {
     username: '',
     password: '',
     email: '',
-  }
+  };
 
   onInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-  }
+  };
 
   clearInputValue = stateKey => {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       ...prevState,
       [stateKey]: '',
     }));
-  }
+  };
 
   buttonClick = event => {
     event.preventDefault();
     // Add whatever you need to do with button click
-    const {username, email, password } = this.state;
+    const { username, email, password } = this.state;
 
     // WIP
     if (this.props.type === 'signup') {
-      axios.post('http://127.0.0.1:4000/api/signup', { username, email, password })
+      axios
+        .post('http://127.0.0.1:5000/api/signup', { username, email, password })
         .then(res => console.log(res.data))
         .catch(err => console.error('Error: ', err));
     } else if (this.props.type === 'login') {
-      axios.post('http://127.0.0.1:4000/api/login', { username, password })
+      axios
+        .post('http://127.0.0.1:5000/api/login', { username, password })
         .then(res => console.log(res.data))
         .catch(err => console.error('Error: ', err));
     }
 
-
     this.setState(emptyForm);
-  }
+  };
 
-  render () {
+  render() {
     return (
-      <FormContainer
-        autoComplete="off"
-        onSubmit={this.buttonClick}
-      >        
+      <FormContainer autoComplete='off' onSubmit={this.buttonClick}>
         <Input
           name='username'
           placeholder='username'
@@ -66,9 +64,7 @@ export default class Signup extends React.Component {
           clearInput={this.clearInputValue}
         />
 
-        {
-          this.props.type === 'signup'
-          ?
+        {this.props.type === 'signup' ? (
           <Input
             name='email'
             placeholder='email'
@@ -77,8 +73,7 @@ export default class Signup extends React.Component {
             value={this.state.email}
             clearInput={this.clearInputValue}
           />
-          : null
-        }
+        ) : null}
 
         <Input
           name='password'
@@ -89,21 +84,25 @@ export default class Signup extends React.Component {
           clearInput={this.clearInputValue}
         />
 
-        {
-          this.props.type === 'signup'
-          ?
-          <LoginText>Already have an account? <a href="/login">Log in!</a></LoginText>
-          :
-          <LoginText>Don't have an account? <a href="/signup">Sign up!</a></LoginText>
-        }
-        
-        {
-          this.props.type === 'signup'
-          ?
-          <Button textValue='Sign up' type="submit" onClick={this.buttonClick}/>
-          :
-          <Button textValue='Log in' type="submit" onClick={this.buttonClick}/>
-        }
+        {this.props.type === 'signup' ? (
+          <LoginText>
+            Already have an account? <a href='/login'>Log in!</a>
+          </LoginText>
+        ) : (
+          <LoginText>
+            Don't have an account? <a href='/signup'>Sign up!</a>
+          </LoginText>
+        )}
+
+        {this.props.type === 'signup' ? (
+          <Button
+            textValue='Sign up'
+            type='submit'
+            onClick={this.buttonClick}
+          />
+        ) : (
+          <Button textValue='Log in' type='submit' onClick={this.buttonClick} />
+        )}
       </FormContainer>
     );
   }
