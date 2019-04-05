@@ -1,4 +1,4 @@
-const app = require('./routing/server');
+const app = require('./api/server');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 2323;
