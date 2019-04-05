@@ -25,3 +25,6 @@ yarn-error.log*
 
 # VSCode debugger
 .vscode
+
+# DB
+/data/credentials.sqlite3
