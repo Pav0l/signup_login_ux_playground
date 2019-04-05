@@ -15,12 +15,10 @@ routes.get('/', protectedRoute, async (req, res, next) => {
     const allUsers = await getAllUsers();
 
     if (allUsers) {
-      res
-        .status(200)
-        .json({
-          message: `Hello ${req.tokenPayload.username}, here are your users:`,
-          users: allUsers,
-        });
+      res.status(200).json({
+        message: `Hello ${req.tokenPayload.username}`,
+        users: allUsers,
+      });
     } else {
       res.status(404).json({ error: 'No users were found' });
     }
