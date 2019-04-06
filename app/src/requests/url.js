@@ -1,9 +1,9 @@
-const routingInfo = {
+const urlInfo = {
   url: 'http://127.0.0.1',
   port: '5000',
   login: '/api/login',
   register: '/api/register',
-  jokes: '/api/users',
+  users: '/api/users',
 };
 
-export default routingInfo;
+export default urlInfo;

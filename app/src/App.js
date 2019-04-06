@@ -14,9 +14,9 @@ const margin = {
 /*
 TODO:
 - refactor everything to use Hooks
-- create separate folder for ALL HTTP requests
-- create separate folder to handle authentication
-- conditional navbar links
+DONE - create separate folder for ALL HTTP requests
+DONE - create separate folder to handle authentication
+DONE - conditional navbar links
 - protected content
 - sanitize user inputs
 - style navbar
@@ -56,7 +56,7 @@ function App() {
         path='/users'
         render={pr =>
           isAuthed ? (
-            <Users {...pr} isAuthed={isAuthed} />
+            <Users {...pr} setAuth={setAuth} />
           ) : (
             <Redirect to='/login' />
           )
