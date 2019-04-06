@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { createNewUser, loginUser } from '../../requests/unprotected';
 
@@ -44,7 +44,8 @@ export default function Form({ type, setAuth }) {
   };
 
   if (isError) {
-    return <h3>Unfortunatelly, there was an error: {isError}</h3>;
+    console.log(isError);
+    return <h3>Unfortunatelly, there was an error</h3>;
   }
 
   return (
