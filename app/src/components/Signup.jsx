@@ -5,16 +5,14 @@ import Form from './shared/Form';
 import SocialHeader from './shared/SocialHeader';
 import Terms from './shared/Terms';
 
-export default class Signup extends React.Component {
-  render() {
-    return (
-      <SignupContainer>
-        <SocialHeader />
-        <Form type='signup' />
-        <Terms company='nifty market' termsLink='#' />
-      </SignupContainer>
-    );
-  }
+export default function Signup() {
+  return (
+    <SignupContainer>
+      <SocialHeader />
+      <Form type='signup' />
+      <Terms company='nifty market' termsLink='#' />
+    </SignupContainer>
+  );
 }
 
 const SignupContainer = styled.div`

@@ -13,11 +13,11 @@ const margin = {
 
 /*
 TODO:
-- refactor everything to use Hooks
+DONE - refactor everything to use Hooks
 DONE - create separate folder for ALL HTTP requests
 DONE - create separate folder to handle authentication
 DONE - conditional navbar links
-- protected content
+DONE - protected content
 - sanitize user inputs
 - style navbar
 - try out PASSPORT JS and implement social login

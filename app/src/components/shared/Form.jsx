@@ -11,7 +11,7 @@ const emptyForm = {
   email: '',
 };
 
-export default function Form(props) {
+export default function Form({ type, setAuth }) {
   const [formInputs, setFormInputs] = useState(emptyForm);
   const [isError, setError] = useState(null);
 
@@ -34,10 +34,10 @@ export default function Form(props) {
     // Add whatever you need to do with button click
     const { username, email, password } = formInputs;
 
-    if (props.type === 'signup') {
+    if (type === 'signup') {
       createNewUser(username, email, password, setError);
-    } else if (props.type === 'login') {
-      loginUser(username, password, props.setAuth, setError);
+    } else if (type === 'login') {
+      loginUser(username, password, setAuth, setError);
     }
 
     setFormInputs(emptyForm);
@@ -58,7 +58,7 @@ export default function Form(props) {
         clearInput={clearInputValue}
       />
 
-      {props.type === 'signup' ? (
+      {type === 'signup' ? (
         <Input
           name='email'
           placeholder='email'
@@ -78,7 +78,7 @@ export default function Form(props) {
         clearInput={clearInputValue}
       />
 
-      {props.type === 'signup' ? (
+      {type === 'signup' ? (
         <LoginText>
           Already have an account? <a href='/login'>Log in!</a>
         </LoginText>
@@ -88,7 +88,7 @@ export default function Form(props) {
         </LoginText>
       )}
 
-      {props.type === 'signup' ? (
+      {type === 'signup' ? (
         <Button textValue='Sign up' type='submit' onClick={buttonClick} />
       ) : (
         <Button textValue='Log in' type='submit' onClick={buttonClick} />
