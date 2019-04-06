@@ -11,19 +11,20 @@ const createNewUser = async (username, email, password, setErrorCb) => {
       email,
       password,
     });
-    console.log(`user id: ${sendNewUser.user_id}`);
+    console.log(sendNewUser.data.user_id);
   } catch (error) {
     setErrorCb(error);
   }
 };
 
-const loginUser = async (username, password, setErrorCb) => {
+const loginUser = async (username, password, setAuthCb, setErrorCb) => {
   try {
     const loginUser = await axios.post(`${url}:${port}${login}`, {
       username,
       password,
     });
     localStorage.setItem('user_token', loginUser.data.token);
+    setAuthCb(true);
     console.log(loginUser.data.message);
   } catch (error) {
     setErrorCb(error);

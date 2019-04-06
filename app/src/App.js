@@ -42,14 +42,17 @@ function App() {
     <div style={margin}>
       <Navbar isAuthed={isAuthed} logoutUser={logoutUser} />
 
-      <Route
-        path='/signup'
-        render={pr => <Signup {...pr} isAuthed={isAuthed} />}
-      />
+      <Route path='/signup' render={pr => <Signup {...pr} />} />
 
       <Route
         path='/login'
-        render={pr => <Login {...pr} isAuthed={isAuthed} />}
+        render={pr =>
+          !isAuthed ? (
+            <Login {...pr} setAuth={setAuth} />
+          ) : (
+            <Redirect to='/users' {...pr} setAuth={setAuth} />
+          )
+        }
       />
 
       <Route

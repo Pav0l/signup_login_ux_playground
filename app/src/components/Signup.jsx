@@ -6,18 +6,12 @@ import SocialHeader from './shared/SocialHeader';
 import Terms from './shared/Terms';
 
 export default class Signup extends React.Component {
-
-  render () {
+  render() {
     return (
       <SignupContainer>
         <SocialHeader />
-        <Form
-          type='signup'
-        />
-        <Terms
-          company="nifty market"
-          termsLink="#"
-        />
+        <Form type='signup' />
+        <Terms company='nifty market' termsLink='#' />
       </SignupContainer>
     );
   }
