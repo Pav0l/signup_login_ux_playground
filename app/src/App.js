@@ -1,54 +1,69 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 // Components
-import Signup from './components/Signup';
 import Navbar from './components/Navbar';
+import Signup from './components/Signup';
 import Login from './components/Login';
-// import UserContent from './components/Content';
-import Button from './components/shared/Button';
+import Users from './components/Content';
 
 const margin = {
-  margin: "1rem"
-}
+  margin: '1rem',
+};
 
-class App extends Component {
+/*
+TODO:
+- refactor everything to use Hooks
+- create separate folder for ALL HTTP requests
+- create separate folder to handle authentication
+- conditional navbar links
+- protected content
+- sanitize user inputs
+- style navbar
+- try out PASSPORT JS and implement social login
 
-  buttonClick = event => {
-    event.preventDefault();
-    console.log('click')
-    axios.get('http://127.0.0.1:4000/api/users')
-      .then(res => console.log(res))
-      .catch(err => console.error('Error: ', err));
+*/
 
-  }
+function App() {
+  const [isAuthed, setAuth] = useState(false);
 
-  render() {
-    return (
-      <div style={margin}>
+  useEffect(() => {
+    if (localStorage.getItem('user_token')) {
+      setAuth(true);
+    }
+  }, []);
 
-        <Navbar />
+  const logoutUser = () => {
+    localStorage.removeItem('user_token');
+    setAuth(false);
+  };
 
-        <Button
-          textValue='get request'
-          onClick={this.buttonClick}
-        />
+  return (
+    <div style={margin}>
+      <Navbar isAuthed={isAuthed} logoutUser={logoutUser} />
 
-        <Route
-          path='/signup'
-          component={Signup}
-        />
+      <Route
+        path='/signup'
+        render={pr => <Signup {...pr} isAuthed={isAuthed} />}
+      />
 
-        <Route
-          path='/login'
-          component={Login}
-        />
+      <Route
+        path='/login'
+        render={pr => <Login {...pr} isAuthed={isAuthed} />}
+      />
 
-        {/* <UserContent /> */}
-      </div>
-    );
-  }
+      <Route
+        path='/users'
+        render={pr =>
+          isAuthed ? (
+            <Users {...pr} isAuthed={isAuthed} />
+          ) : (
+            <Redirect to='/login' />
+          )
+        }
+      />
+    </div>
+  );
 }
 
 export default App;

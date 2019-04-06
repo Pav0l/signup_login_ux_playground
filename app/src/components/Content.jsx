@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function UserContent() {
+export default function Users() {
   return (
     <div>
       <div>I'm the user content</div>
